@@ -1,8 +1,15 @@
 from flask import Flask, request, jsonify, render_template
 from analyze import read_image
+from dotenv import load_dotenv
+import os
 
-endpoint= "https://mycompvisionservice.cognitiveservices.azure.com/"
-key= "EDMAd5ARFsgh4GfM1DL7LPiEYkG8dHL7IvZdY102WnHHlQ9uzDvAJQQJ99AKACqBBLyXJ3w3AAAFACOGx625"
+load_dotenv()
+
+endpoint=os.getenv("azure_endpoint")
+key= os.getenv("azure_key")
+
+if not key or endpoint:
+    raise ValueError("missing")
 
 app = Flask(__name__, template_folder='templates')
 

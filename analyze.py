@@ -3,16 +3,6 @@ from msrest.authentication import CognitiveServicesCredentials
 from azure.cognitiveservices.vision.computervision.models import OperationStatusCodes
 import time
 
-endpoint = "ENTER ENDPOINT HERE"
-key = "ENTER KEY HERE"
-
-credentials = CognitiveServicesCredentials(key)
-
-client = ComputerVisionClient(
-    endpoint=endpoint,
-    credentials=credentials
-)
-
 def read_image(uri):
     numberOfCharsInOperationId = 36
     maxRetries = 10
@@ -47,3 +37,4 @@ def read_image(uri):
         return res_text
     else:
         return "error"
+
